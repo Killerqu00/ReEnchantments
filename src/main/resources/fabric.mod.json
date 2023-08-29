@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "reenchantments",
+  "version": "${version}",
+  "name": "ReEnchantments",
+  "description": "",
+  "authors": [
+    "Killerqu00"
+  ],
+  "contact": {
+    "repo": "https://github.com/Killerqu00/ReEnchantments"
+  },
+  "license": "Apache-2.0",
+  "icon": "assets/reenchantments/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.killerqu.reenchantments.client.ReEnchantmentsClient"
+    ],
+    "main": [
+      "com.killerqu.reenchantments.ReEnchantments"
+    ]
+  },
+  "mixins": [
+    "reenchantments.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
