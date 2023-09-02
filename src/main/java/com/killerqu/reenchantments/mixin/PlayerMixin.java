@@ -3,10 +3,13 @@ package com.killerqu.reenchantments.mixin;
 import com.killerqu.reenchantments.enchantments.ModEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,5 +30,14 @@ public class PlayerMixin {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
         player.heal(EnchantmentHelper.getLevel(ModEnchants.VAMPIRISM, mainhand));
+    }
+
+    @Inject(method = "onKilledOther", at = @At("TAIL"))
+    public void midasTouchOnKill(ServerWorld world, LivingEntity other, CallbackInfo ci) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+        ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
+        if (!other.isBaby() && EnchantmentHelper.getLevel(ModEnchants.MIDASTOUCH, mainhand) == 1) {
+            world.spawnEntity(new ItemEntity(world, other.getX(), other.getY(), other.getZ(), new ItemStack(Registry.ITEM.get(Identifier.tryParse("minecraft:gold_nugget")))));
+        }
     }
 }
