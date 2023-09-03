@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public class PlayerMixin {
@@ -29,14 +30,14 @@ public class PlayerMixin {
     }
 
     @Inject(method = "onKilledOther", at = @At("TAIL"))
-    public void vampirismHealOnKill(ServerWorld world, LivingEntity other, CallbackInfo ci) {
+    public void vampirismHealOnKill(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
         player.heal(EnchantmentHelper.getLevel(ModEnchants.VAMPIRISM, mainhand));
     }
 
     @Inject(method = "onKilledOther", at = @At("TAIL"))
-    public void midasTouchOnKill(ServerWorld world, LivingEntity other, CallbackInfo ci) {
+    public void midasTouchOnKill(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
         if (!other.isBaby() && EnchantmentHelper.getLevel(ModEnchants.MIDASTOUCH, mainhand) == 1) {
