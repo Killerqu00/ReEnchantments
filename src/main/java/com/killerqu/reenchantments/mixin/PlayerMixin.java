@@ -10,9 +10,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -41,7 +41,7 @@ public class PlayerMixin {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
         if (!other.isBaby() && EnchantmentHelper.getLevel(ModEnchants.MIDASTOUCH, mainhand) == 1) {
-            world.spawnEntity(new ItemEntity(world, other.getX(), other.getY(), other.getZ(), new ItemStack(Registry.ITEM.get(Identifier.tryParse("minecraft:gold_nugget")))));
+            world.spawnEntity(new ItemEntity(world, other.getX(), other.getY(), other.getZ(), new ItemStack(Registries.ITEM.get(Identifier.tryParse("minecraft:gold_nugget")))));
         }
     }
 
