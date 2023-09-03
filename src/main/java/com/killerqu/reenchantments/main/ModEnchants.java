@@ -1,6 +1,8 @@
-package com.killerqu.reenchantments.enchantments;
+package com.killerqu.reenchantments.main;
 
-import com.killerqu.reenchantments.ReEnchantments;
+import com.killerqu.reenchantments.enchantments.ExperiencedEnchant;
+import com.killerqu.reenchantments.enchantments.MidasTouchEnchant;
+import com.killerqu.reenchantments.enchantments.VampirismEnchant;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

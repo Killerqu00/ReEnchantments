@@ -18,7 +18,7 @@
       "com.killerqu.reenchantments.client.ReEnchantmentsClient"
     ],
     "main": [
-      "com.killerqu.reenchantments.ReEnchantments"
+      "com.killerqu.reenchantments.main.ReEnchantments"
     ]
   },
   "mixins": [

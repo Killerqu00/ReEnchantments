@@ -1,6 +1,6 @@
 package com.killerqu.reenchantments.mixin;
 
-import com.killerqu.reenchantments.enchantments.ModEnchants;
+import com.killerqu.reenchantments.main.ModEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;

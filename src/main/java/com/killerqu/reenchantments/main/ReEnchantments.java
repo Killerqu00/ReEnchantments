@@ -1,6 +1,5 @@
-package com.killerqu.reenchantments;
+package com.killerqu.reenchantments.main;
 
-import com.killerqu.reenchantments.enchantments.ModEnchants;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
