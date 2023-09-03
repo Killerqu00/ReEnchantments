@@ -2,9 +2,12 @@ package com.killerqu.reenchantments.mixin;
 
 import com.killerqu.reenchantments.main.ModEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -38,6 +41,15 @@ public class PlayerMixin {
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
         if (!other.isBaby() && EnchantmentHelper.getLevel(ModEnchants.MIDASTOUCH, mainhand) == 1) {
             world.spawnEntity(new ItemEntity(world, other.getX(), other.getY(), other.getZ(), new ItemStack(Registry.ITEM.get(Identifier.tryParse("minecraft:gold_nugget")))));
+        }
+    }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getFireAspect(Lnet/minecraft/entity/LivingEntity;)I"))
+    public void attack(Entity target, CallbackInfo ci) {
+        PlayerEntity player = (PlayerEntity)(Object)this;
+        ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
+        if (target instanceof LivingEntity && EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, mainhand) > 0) {
+            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, mainhand)*20), player);
         }
     }
 }
