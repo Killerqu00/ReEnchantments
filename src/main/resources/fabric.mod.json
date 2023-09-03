@@ -3,7 +3,7 @@
   "id": "reenchantments",
   "version": "${version}",
   "name": "ReEnchantments",
-  "description": "",
+  "description": "Adds new Vanilla-style enchantments.",
   "authors": [
     "Killerqu00"
   ],
