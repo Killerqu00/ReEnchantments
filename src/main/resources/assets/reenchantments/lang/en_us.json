@@ -1,6 +1,10 @@
 {
   "enchantment.reenchantments.experienced": "Experienced",
+  "enchantment.reenchantments.experienced.desc": "Increase incoming experience.",
   "enchantment.reenchantments.vampirism": "Vampirism",
+  "enchantment.reenchantments.vampirism.desc": "Heal a fixed amount of health on killing a mob.",
   "enchantment.reenchantments.midas_touch": "Midas Touch",
-  "enchantment.reenchantments.cripple": "Cripple"
+  "enchantment.reenchantments.midas_touch.desc": "Drops a golden nugget on killing a mob.",
+  "enchantment.reenchantments.cripple": "Cripple",
+  "enchantment.reenchantments.cripple.desc": "Apply Slowness effect on hitting a mob."
 }
