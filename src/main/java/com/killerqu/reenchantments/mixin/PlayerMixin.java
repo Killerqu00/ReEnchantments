@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(PlayerEntity.class)
 public class PlayerMixin {
@@ -44,11 +45,11 @@ public class PlayerMixin {
         }
     }
 
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getFireAspect(Lnet/minecraft/entity/LivingEntity;)I"))
-    public void attack(Entity target, CallbackInfo ci) {
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getFireAspect(Lnet/minecraft/entity/LivingEntity;)I"), locals = LocalCapture.CAPTURE_FAILHARD)
+    public void attack(Entity target, CallbackInfo ci, float f, float g, float h, boolean bl, boolean bl2, int i, boolean bl3, boolean bl4, double d, float j, boolean bl5) {
         PlayerEntity player = (PlayerEntity)(Object)this;
         ItemStack mainhand = player.getEquippedStack(EquipmentSlot.MAINHAND);
-        if (target instanceof LivingEntity && EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, mainhand) > 0) {
+        if (target instanceof LivingEntity && EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, mainhand) > 0 && bl3) {
             ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, mainhand)*20), player);
         }
     }
