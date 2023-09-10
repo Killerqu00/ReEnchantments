@@ -6,5 +6,7 @@
   "enchantment.reenchantments.midas_touch": "Midas Touch",
   "enchantment.reenchantments.midas_touch.desc": "Drops a golden nugget on killing a mob.",
   "enchantment.reenchantments.cripple": "Cripple",
-  "enchantment.reenchantments.cripple.desc": "Apply Slowness effect on crit hits"
+  "enchantment.reenchantments.cripple.desc": "Apply Slowness effect on crit hits.",
+  "enchantment.reenchantments.hermes_blessing": "Hermes Blessing",
+  "enchantment.reenchantments.hermes_blessing.desc": "Speeds up player on full health."
 }
