@@ -74,7 +74,7 @@ public class PlayerMixin {
             playerSpeed.addTemporaryModifier(HERMES_SPEED_BOOST);
         }
         if (playerSpeed.getModifier(HERMES_SPEED_BOOST_UUID) != null && (player.getHealth() != player.getMaxHealth() || level == 0)){
-            playerSpeed.removeModifier(HERMES_SPEED_BOOST);
+            playerSpeed.removeModifier(HERMES_SPEED_BOOST_UUID);
         }
     }
 }
