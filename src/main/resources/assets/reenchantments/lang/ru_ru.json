@@ -1,0 +1,12 @@
+{
+  "enchantment.reenchantments.experienced": "Опытный",
+  "enchantment.reenchantments.experienced.desc": "Увеличивает входящий опыт.",
+  "enchantment.reenchantments.vampirism": "Вампиризм",
+  "enchantment.reenchantments.vampirism.desc": "Лечит фиксированное кол-во здоровья при убийстве моба.",
+  "enchantment.reenchantments.midas_touch": "Касание Мидаса",
+  "enchantment.reenchantments.midas_touch.desc": "При убийстве моба выпадает золотой самородок.",
+  "enchantment.reenchantments.cripple": "Паралич",
+  "enchantment.reenchantments.cripple.desc": "Накладывает Замедление при критических ударах.",
+  "enchantment.reenchantments.hermes_blessing": "Дар Гермеса",
+  "enchantment.reenchantments.hermes_blessing.desc": "Ускоряет игрока при полном здоровье."
+}
