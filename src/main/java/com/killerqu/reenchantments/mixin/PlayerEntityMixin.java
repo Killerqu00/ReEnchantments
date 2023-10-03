@@ -74,7 +74,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             if (this.getHealth() == this.getMaxHealth() && level > 0 && playerSpeed.getModifier(HERMES_SPEED_BOOST_UUID) == null) {
                 playerSpeed.addTemporaryModifier(hermesBoost);
             } else if (playerSpeed.getModifier(HERMES_SPEED_BOOST_UUID) != null && (this.getHealth() != this.getMaxHealth() || level == 0)) {
-                playerSpeed.removeModifier(hermesBoost);
+                playerSpeed.removeModifier(HERMES_SPEED_BOOST_UUID);
             }
         }
     }
