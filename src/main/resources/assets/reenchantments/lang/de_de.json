@@ -1,0 +1,12 @@
+{
+  "enchantment.reenchantments.experienced": "Erfahren",
+  "enchantment.reenchantments.experienced.desc": "Erhalt mehr Erfahrungspunkte.",
+  "enchantment.reenchantments.vampirism": "Vampirismus",
+  "enchantment.reenchantments.vampirism.desc": "Erhalt Herzen, wenn du ein Monster tötest.",
+  "enchantment.reenchantments.midas_touch": "Midas Berührung",
+  "enchantment.reenchantments.midas_touch.desc": "Erhalt einen Goldklumpen, wenn du ein Monster tötest.",
+  "enchantment.reenchantments.cripple": "Krüppel",
+  "enchantment.reenchantments.cripple.desc": "Gebe Langsamkeit, wenn du ein kritischer Treffer machen.",
+  "enchantment.reenchantments.hermes_blessing": "Hermes Segen",
+  "enchantment.reenchantments.hermes_blessing.desc": "Gebe ein Spieler*in Schnelligkeit, wenn Sie alle Herzen haben."
+}
