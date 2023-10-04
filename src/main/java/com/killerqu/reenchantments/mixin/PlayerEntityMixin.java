@@ -2,11 +2,7 @@ package com.killerqu.reenchantments.mixin;
 
 import com.killerqu.reenchantments.ModEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -23,9 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.UUID;
@@ -55,15 +49,17 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getFireAspect(Lnet/minecraft/entity/LivingEntity;)I"), locals = LocalCapture.CAPTURE_FAILHARD)
-    public void reEnchantments$crippleAttack(Entity target, CallbackInfo ci, float f, float g, float h, boolean bl, boolean bl2, int i, boolean crit, boolean bl4, double d, float j, boolean bl5) {
-        if (crit) {
+    @ModifyVariable(method = "attack", at = @At(value = "STORE"), ordinal = 2)
+    public boolean reEnchantments$crippleAttack(boolean bl3, Entity target) {
+        if (bl3) {
             var level = EnchantmentHelper.getLevel(ModEnchants.CRIPPLE, this.getEquippedStack(EquipmentSlot.MAINHAND));
             if (level > 0 && target instanceof LivingEntity living) {
                 living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, level * 20), this);
             }
         }
+        return bl3;
     }
+
 
     @ModifyArgs(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setMovementSpeed(F)V"))
     public void reEnchantments$setMovementSpeedWithHermesBlessing(Args args) {
